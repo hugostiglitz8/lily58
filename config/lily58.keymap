@@ -19,6 +19,23 @@
     };
 
     behaviors {
+        // Define a tap dance that toggles between two outputs
+        td_toggle: kp_toggle {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <400>;
+            bindings = <&kp Y>, <&kp Z>;  // Replace Y and Z with your desired outputs
+        };
+        
+         Alternative: If you want more than 2 outputs, you can do:
+         td_multi: kp_toggle_multi {
+             compatible = "zmk,behavior-tap-dance";
+             #binding-cells = <0>;
+             tapping-term-ms = <400>;
+             bindings = <&kp Y>, <&kp Z>, <&kp A>;  // Cycles through Y, Z, A
+         };
+
+
         tap_hold: tap_hold {
             compatible = "zmk,behavior-hold-tap";
             label = "TAP_HOLD";
