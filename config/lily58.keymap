@@ -27,6 +27,15 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
+
+        isolate_toggle: isolate_toggle {
+            compatible = "zmk,behavior-tap-dance";
+            label = "ISOLATE_TOGGLE";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE>, <&kp LS(GRAVE)>;
+
+            tapping-term-ms = <400>;
+        };
     };
 
     keymap {
@@ -80,11 +89,11 @@
 
             display-name = "View";
             bindings = <
-&kp F3  &kp F4  &kp F2  &kp Z    &kp GRAVE  &kp RET                    &trans       &trans     &trans     &trans    &trans     &trans
-&kp F7  &kp F1  &kp F6  &kp H    &kp J      &trans                     &kp N6       &kp N7     &kp N8     &kp N9    &kp N0     &trans
-&none   &kp F5  &none   &none    &none      &none                      &trans       &kp LEFT   &kp DOWN   &kp UP    &kp RIGHT  &trans
-&none   &kp F8  &kp F9  &kp F10  &kp F11    &kp F12  &trans    &trans  &kp KP_PLUS  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT   &kp BSLH
-                        &trans   &trans     &trans   &trans    &trans  &trans       &trans     &trans
+&kp F3  &kp F4  &kp F2  &kp Z    &isolate_toggle  &kp RET                    &trans       &trans     &trans     &trans    &trans     &trans
+&kp F7  &kp F1  &kp F6  &kp H    &kp J            &trans                     &kp N6       &kp N7     &kp N8     &kp N9    &kp N0     &trans
+&none   &kp F5  &none   &none    &none            &none                      &trans       &kp LEFT   &kp DOWN   &kp UP    &kp RIGHT  &trans
+&none   &kp F8  &kp F9  &kp F10  &kp F11          &kp F12  &trans    &trans  &kp KP_PLUS  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT   &kp BSLH
+                        &trans   &trans           &trans   &trans    &trans  &trans       &trans     &trans
             >;
         };
 
