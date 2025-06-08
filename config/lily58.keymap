@@ -12,7 +12,7 @@
         lm: new_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&mo 3 &kp LEFT_SHIFT>;
+            bindings = <&mo 1 &kp LEFT_SHIFT>;
             label = "NEW_MACRO";
         };
     };
@@ -74,6 +74,13 @@
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
+
+        doubleTap_stickyLayer: doubleTap_stickyLayer {
+            compatible = "zmk,behavior-tap-dance";
+            label = "DOUBLETAP_STICKYLAYER";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_SHIFT>, <&sl 5>;
+        };
     };
 
     keymap {
@@ -89,19 +96,26 @@
 
             display-name = "Base";
             bindings = <
-&kp SQT  &kp LA(L)  &kp X       &tap_hold_toglayer 1 B  &none      &none                                  &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
+&kp SQT  &kp LA(L)  &kp X       &tap_hold_toglayer 2 B  &none      &none                                  &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
 &none    &none      &kp ESCAPE  &kp RET                 &kp DEL    &kp P                                  &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
 &none    &none      &kp U       &kp M                   &kp S      &kp LA(M)                              &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
 &none    &none      &kp SPACE   &kp J                   &kp GRAVE  &kp E      &none             &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-                                &tog 5                  &mo 4      &mo 3      &kp LEFT_SHIFT    &kp RET   &mo 1   &kp BSPC  &kp RGUI
+                                &tog 1                  &mo 4      &mo 1      &kp LEFT_SHIFT    &kp RET   &mo 2   &kp BSPC  &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-       
+        sketch_Layer {
+            bindings = <
+&none  &none  &kp C   &kp R   &kp L   &kp NON_US_BACKSLASH                                    &trans  &trans  &trans  &trans  &trans  &trans
+&none  &kp A  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
+&none  &none  &none   &trans  &kp R   &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
+&none  &none  &kp N   &trans  &trans  &none                 &mo 4                     &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                      &trans  &trans  &mo 2                 &doubleTap_stickyLayer    &trans  &trans  &trans  &trans
+            >;
+        };
 
-        
         blue_layer {
             // ------------------------------------------------------------------------------------------------------------
             // | BTCLR | BT1 | BT2 |  BT3 |  BT4 |  BT5 |                   |      |       |       |      |       |       |
@@ -130,18 +144,24 @@
             >;
         };
 
-        sketch_Layer {
+        skPurple {
             bindings = <
-&trans  &trans  &kp C   &kp R   &kp L   &kp NON_US_BACKSLASH                     &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp C   &trans  &kp L   &trans                                   &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &kp R   &trans                                   &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp N   &trans  &trans  &trans                &kp TAB    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans                &trans     &trans  &trans  &trans  &trans
+&trans  &trans  &kp E   &kp P   &kp C   &kp RIGHT_BRACKET                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                               &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                               &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans             &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans             &trans    &trans  &trans  &trans  &trans
             >;
         };
 
-       
-
-      
+        constraints_layer {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
+            >;
+        };
     };
 };
