@@ -20,22 +20,7 @@
     behaviors {
         // Define a tap dance that toggles between two outputs
 
-        td_toggle: kp_toggle {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <400>;
-            bindings = <&kp Y>, <&kp Z>;
 
-            // Replace Y and Z with your desired outputs
-        };
-
-        // Alternative: If you want more than 2 outputs, you can do:
-        // td_multi: kp_toggle_multi {
-        //     compatible = "zmk,behavior-tap-dance";
-        //     #binding-cells = <0>;
-        //     tapping-term-ms = <400>;
-        //     bindings = <&kp Y>, <&kp Z>, <&kp A>;  // Cycles through Y, Z, A
-        // };
 
         tap_hold_toglayer: tap_hold_toglayer {
             compatible = "zmk,behavior-hold-tap";
@@ -47,33 +32,7 @@
             flavor = "tap-preferred";
         };
 
-        isolate: isolate {
-            compatible = "zmk,behavior-tap-dance";
-            label = "ISOLATE";
-            #binding-cells = <0>;
-            bindings = <&kp GRAVE>, <&kp LS(GRAVE)>;
 
-            tapping-term-ms = <350>;
-        };
-
-        EscEnter: EscEnter {
-            compatible = "zmk,behavior-tap-dance";
-            label = "ESCENTER";
-            #binding-cells = <0>;
-            bindings = <&kp ESCAPE>, <&kp LS(RET)>;
-
-            tapping-term-ms = <350>;
-        };
-
-        new_behavior: new_behavior {
-            compatible = "zmk,behavior-hold-tap";
-            label = "NEW_BEHAVIOR";
-            bindings = <&tog>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-        };
 
         doubleTap_stickyLayer: doubleTap_stickyLayer {
             compatible = "zmk,behavior-tap-dance";
