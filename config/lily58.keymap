@@ -78,11 +78,11 @@
 
             display-name = "Base";
             bindings = <
-&kp SQT  &kp LA(L)  &kp E      &kp Y    &kp LA(M)  &kp DEL                                 &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
-&kp X    &kp B      &kp S      &kp RET  &kp M      &kp ESCAPE                              &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
-&none    &kp U      &kp SPACE  &kp J    &kp GRAVE  &none                                   &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
-&none    &none      &none      &none    &none      &none       &none             &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-                               &tog 3   &mo 2      &mo 1       &kp LEFT_SHIFT    &kp RET   &mo 4   &kp BSPC  &kp RGUI
+&kp SQT  &kp LA(L)  &kp E      &kp Y    &kp LA(M)  &kp BACKSPACE                              &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
+&kp X    &kp B      &kp S      &kp RET  &kp M      &kp ESCAPE                                 &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
+&none    &kp U      &kp SPACE  &kp J    &kp GRAVE  &none                                      &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
+&none    &none      &none      &none    &none      &none          &none             &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+                               &tog 3   &mo 2      &mo 1          &kp LEFT_SHIFT    &kp RET   &mo 4   &kp BSPC  &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -108,11 +108,11 @@
 
         function_layer {
             bindings = <
-&trans  &trans  &trans      &trans      &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans      &trans      &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans      &trans      &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp K_REDO  &kp K_UNDO  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                            &trans      &trans  &trans  &trans    &trans  &trans  &trans  &trans
+&trans  &trans  &trans         &trans         &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans         &trans         &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans         &trans         &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp C_AC_REDO  &kp C_AC_UNDO  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                               &trans         &trans  &trans  &trans    &trans  &trans  &trans  &trans
             >;
         };
 
@@ -121,8 +121,8 @@
 &trans  &trans  &trans  &trans  &trans  &trans                     &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &kp C   &trans  &kp L   &trans                     &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &kp R   &trans                     &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans   &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &kp TAB  &trans    &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &kp TAB    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans  &trans     &trans  &trans  &trans  &trans
             >;
         };
 
