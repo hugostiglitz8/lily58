@@ -5,7 +5,6 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 
 / {
@@ -26,7 +25,8 @@
             #binding-cells = <0>;
             tapping-term-ms = <400>;
             bindings = <&kp Y>, <&kp Z>;
-  // Replace Y and Z with your desired outputs
+
+            // Replace Y and Z with your desired outputs
         };
 
         // Alternative: If you want more than 2 outputs, you can do:
@@ -51,6 +51,17 @@
             label = "ISOLATE";
             #binding-cells = <0>;
             bindings = <&kp GRAVE>, <&kp LS(GRAVE)>;
+
+            tapping-term-ms = <350>;
+        };
+
+        EscEnter: EscEnter {
+            compatible = "zmk,behavior-tap-dance";
+            label = "ESCENTER";
+            #binding-cells = <0>;
+            bindings = <&kp ESCAPE>, <&kp LS(RET)>;
+
+            tapping-term-ms = <350>;
         };
     };
 
@@ -67,17 +78,17 @@
 
             display-name = "Base";
             bindings = <
-&kp ESC    &kp N1  &kp N2  &kp Z     &isolate  &kp ESCAPE                               &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
-&kp TAB    &kp Q   &kp W   &kp E     &kp R     &kp M                                    &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
-&kp LCTRL  &kp A   &kp S   &kp D     &kp F     &kp G                                    &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z   &kp X   &kp C     &kp V     &kp B       &tap_hold 3 TAB    &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-                           &kp LALT  &kp LGUI  &mo 1       &lm                &kp RET   &mo 2   &kp BSPC  &kp RGUI
+&kp SQT  &kp LA(L)  &kp E      &kp Y    &kp LA(M)  &kp DEL                                 &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
+&kp X    &kp B      &kp S      &kp RET  &kp M      &kp ESCAPE                              &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
+&none    &kp U      &kp SPACE  &kp J    &kp GRAVE  &none                                   &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
+&none    &none      &none      &none    &none      &none       &none             &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+                               &none    &none      &mo 1       &kp LEFT_SHIFT    &kp RET   &mo 2   &kp BSPC  &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        shift_layer {
+        view_layer {
             // ------------------------------------------------------------------------------------------------------------
             // | BTCLR | BT1 | BT2 |  BT3 |  BT4 |  BT5 |                   |      |       |       |      |       |       |
             // |  F1   |  F2 |  F3 |  F4  |  F5  |  F6  |                   |  F7  |  F8   |  F9   |  F10 |  F11  |  F12  |
@@ -85,17 +96,17 @@
             // |       |     |     |      |      |      |        |  |       |      |  _    |  +    |  {   |   }   |  "|"  |
             //                     |      |      |      |        |  |       |      |       |       |
 
-            display-name = "Shift";
+            display-name = "view";
             bindings = <
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &kp RET                      &trans     &trans     &trans           &trans    &trans    &trans
-&kp F1      &kp F2        &kp F3        &kp F4        &kp F5        &kp F6                       &kp F7     &kp F8     &kp F9           &kp F10   &kp F11   &kp F12
-&kp GRAVE   &kp EXCL      &kp AT        &kp HASH      &kp DOLLAR    &kp PRCNT                    &kp CARET  &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp TILDE
-&trans      &trans        &trans        &trans        &trans        &trans     &trans    &trans  &trans     &kp MINUS  &kp KP_PLUS      &kp LBRC  &kp RBRC  &kp PIPE
-                                        &trans        &trans        &trans     &trans    &trans  &trans     &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans     &trans     &trans           &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &kp F7     &kp F8     &kp F9           &kp F10   &kp F11   &kp F12
+&trans  &trans  &trans  &trans  &kp H   &trans                    &kp CARET  &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp TILDE
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans     &kp MINUS  &kp KP_PLUS      &kp LBRC  &kp RBRC  &kp PIPE
+                        &trans  &trans  &trans  &trans    &trans  &trans     &trans     &trans
             >;
         };
 
-        view_layer {
+        x {
             // ------------------------------------------------------------------------------------------------------------
             // |       |     |     |      |      |      |                   |      |       |       |      |       |       |
             // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |   7   |   8   |  9   |   0   |       |
@@ -103,12 +114,12 @@
             // |   F7  |  F8 |  F9 |  F10 |  F11 |  F12 |        |  |       |  +   |   -   |   =   |  [   |   ]   |   \   |
             //                     |      |      |      |        |  |       |      |       |       |
 
-            display-name = "View";
+            display-name = "x";
             bindings = <
 &kp F3  &kp F4  &kp F2  &kp Z    &kp GRAVE  &kp RET                    &trans       &trans     &trans     &trans    &trans     &trans
-&kp F7  &kp F1  &kp F6  &kp H    &kp J      &trans                     &kp N6       &kp N7     &kp N8     &kp N9    &kp N0     &trans
-&none   &kp F5  &none   &none    &none      &none                      &trans       &kp LEFT   &kp DOWN   &kp UP    &kp RIGHT  &trans
-&none   &kp F8  &kp F9  &kp F10  &kp F11    &kp F12  &trans    &trans  &kp KP_PLUS  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT   &kp BSLH
+&kp F7  &kp F1  &kp F6  &kp H    &trans     &trans                     &kp N6       &kp N7     &kp N8     &kp N9    &kp N0     &trans
+&trans  &kp F5  &trans  &trans   &trans     &trans                     &trans       &kp LEFT   &kp DOWN   &kp UP    &kp RIGHT  &trans
+&trans  &kp F8  &kp F9  &kp F10  &kp F11    &kp F12  &trans    &trans  &kp KP_PLUS  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT   &kp BSLH
                         &trans   &trans     &trans   &trans    &trans  &trans       &trans     &trans
             >;
         };
