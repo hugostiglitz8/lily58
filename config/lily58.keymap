@@ -82,7 +82,7 @@
 &kp X    &kp B      &kp S      &kp RET  &kp M      &kp ESCAPE                              &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
 &none    &kp U      &kp SPACE  &kp J    &kp GRAVE  &none                                   &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
 &none    &none      &none      &none    &none      &none       &none             &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-                               &none    &none      &mo 1       &kp LEFT_SHIFT    &kp RET   &mo 2   &kp BSPC  &kp RGUI
+                               &tog 3   &mo 2      &mo 1       &kp LEFT_SHIFT    &kp RET   &mo 4   &kp BSPC  &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -98,11 +98,31 @@
 
             display-name = "view";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans     &trans     &trans           &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &kp F7     &kp F8     &kp F9           &kp F10   &kp F11   &kp F12
-&trans  &trans  &trans  &trans  &kp H   &trans                    &kp CARET  &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp TILDE
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans     &kp MINUS  &kp KP_PLUS      &kp LBRC  &kp RBRC  &kp PIPE
-                        &trans  &trans  &trans  &trans    &trans  &trans     &trans     &trans
+&trans  &trans   &trans  &trans  &trans  &trans                    &trans     &trans     &trans           &trans    &trans    &trans
+&kp F3  &kp F12  &kp F2  &trans  &trans  &trans                    &kp F7     &kp F8     &kp F9           &kp F10   &kp F11   &kp F12
+&kp F7  &kp F5   &kp F6  &kp Z   &kp H   &trans                    &kp CARET  &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp TILDE
+&trans  &trans   &trans  &trans  &trans  &trans  &trans    &trans  &trans     &kp MINUS  &kp KP_PLUS      &kp LBRC  &kp RBRC  &kp PIPE
+                         &trans  &trans  &trans  &trans    &trans  &trans     &trans     &trans
+            >;
+        };
+
+        function_layer {
+            bindings = <
+&trans  &trans  &trans      &trans      &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans      &trans      &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans      &trans      &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp K_REDO  &kp K_UNDO  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                            &trans      &trans  &trans  &trans    &trans  &trans  &trans  &trans
+            >;
+        };
+
+        sketch_Layer {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                     &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp C   &trans  &kp L   &trans                     &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &kp R   &trans                     &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans   &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &kp TAB  &trans    &trans  &trans  &trans  &trans
             >;
         };
 
@@ -114,9 +134,9 @@
             // |   F7  |  F8 |  F9 |  F10 |  F11 |  F12 |        |  |       |  +   |   -   |   =   |  [   |   ]   |   \   |
             //                     |      |      |      |        |  |       |      |       |       |
 
-            display-name = "x";
+            display-name = "Sketch";
             bindings = <
-&kp F3  &kp F4  &kp F2  &kp Z    &kp GRAVE  &kp RET                    &trans       &trans     &trans     &trans    &trans     &trans
+&trans  &trans  &kp F2  &kp Z    &kp GRAVE  &kp RET                    &trans       &trans     &trans     &trans    &trans     &trans
 &kp F7  &kp F1  &kp F6  &kp H    &trans     &trans                     &kp N6       &kp N7     &kp N8     &kp N9    &kp N0     &trans
 &trans  &kp F5  &trans  &trans   &trans     &trans                     &trans       &kp LEFT   &kp DOWN   &kp UP    &kp RIGHT  &trans
 &trans  &kp F8  &kp F9  &kp F10  &kp F11    &kp F12  &trans    &trans  &kp KP_PLUS  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT   &kp BSLH
@@ -142,7 +162,7 @@
             >;
         };
 
-        draw_layer {
+        d {
             // ------------------------------------------------------------------------------------------------------------
             // |       |     |     |      |      |      |                   |      |       |       |      |       |       |
             // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |   7   |   8   |  9   |   0   |       |
@@ -150,7 +170,7 @@
             // |   F7  |  F8 |  F9 |  F10 |  F11 |  F12 |        |  |       |  +   |   -   |   =   |  [   |   ]   |   \   |
             //                     |      |      |      |        |  |       |      |       |       |
 
-            display-name = "Draw";
+            display-name = "s";
             bindings = <
 &trans     &trans  &trans  &trans   &trans   &trans                     &trans       &trans     &trans     &trans    &trans     &trans
 &kp GRAVE  &kp N1  &kp N2  &kp N3   &kp N4   &kp N5                     &kp N6       &kp N7     &kp N8     &kp N9    &kp N0     &trans
