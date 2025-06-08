@@ -20,8 +20,6 @@
     behaviors {
         // Define a tap dance that toggles between two outputs
 
-
-
         tap_hold_toglayer: tap_hold_toglayer {
             compatible = "zmk,behavior-hold-tap";
             label = "TAP_HOLD_TOGLAYER";
@@ -32,13 +30,11 @@
             flavor = "tap-preferred";
         };
 
-
-
         doubleTap_stickyLayer: doubleTap_stickyLayer {
             compatible = "zmk,behavior-tap-dance";
             label = "DOUBLETAP_STICKYLAYER";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_SHIFT>, <&sl 5>;
+            bindings = <&kp LEFT_SHIFT>, <&sl 6>;
         };
     };
 
@@ -57,9 +53,9 @@
             bindings = <
 &kp SQT  &kp LA(L)  &kp X       &tap_hold_toglayer 2 B  &none      &none                                  &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
 &none    &none      &kp ESCAPE  &kp RET                 &kp DEL    &kp P                                  &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
-&none    &none      &kp U       &kp M                   &kp S      &kp LA(M)                              &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
-&none    &none      &kp SPACE   &kp J                   &kp GRAVE  &kp E      &none             &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-                                &tog 1                  &mo 4      &mo 1      &kp LEFT_SHIFT    &kp RET   &mo 2   &kp BSPC  &kp RGUI
+&none    &kp O      &kp U       &kp M                   &kp S      &kp LA(M)                              &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
+&none    &none      &kp SPACE   &kp J                   &kp GRAVE  &kp E      &mo 4             &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+                                &tog 1                  &mo 3      &mo 1      &kp LEFT_SHIFT    &kp RET   &mo 2   &kp BSPC  &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -67,11 +63,11 @@
 
         sketch_Layer {
             bindings = <
-&none  &none  &kp C   &kp R   &kp L   &kp NON_US_BACKSLASH                                    &trans  &trans  &trans  &trans  &trans  &trans
-&none  &kp A  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
-&none  &none  &none   &trans  &kp R   &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
-&none  &none  &kp N   &trans  &trans  &none                 &mo 4                     &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                      &trans  &trans  &mo 2                 &doubleTap_stickyLayer    &trans  &trans  &trans  &trans
+&none  &kp G   &kp C   &kp R   &kp L   &kp NON_US_BACKSLASH                                    &trans  &trans  &trans  &trans  &trans  &trans
+&none  &kp A   &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
+&none  &trans  &none   &trans  &kp R   &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
+&none  &none   &kp N   &trans  &trans  &none                 &mo 5                     &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                       &trans  &trans  &sl 6                 &doubleTap_stickyLayer    &trans  &trans  &trans  &trans
             >;
         };
 
@@ -103,6 +99,16 @@
             >;
         };
 
+        purple {
+            bindings = <
+&none  &none  &kp B  &kp F    &kp E  &none                  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &kp TAB  &none  &none                  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none    &none  &none                  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none    &none  &none  &none    &none  &none  &none  &none  &none  &none  &none
+                     &none    &none  &none  &none    &none  &none  &none  &none
+            >;
+        };
+
         skPurple {
             bindings = <
 &trans  &trans  &kp E   &kp P   &kp C   &kp RIGHT_BRACKET                    &trans  &trans  &trans  &trans  &trans  &trans
@@ -115,11 +121,11 @@
 
         constraints_layer {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
+&trans  &kp LC(I)  &kp LC(C)  &kp LC(P)  &kp LC(V)  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LC(T)  &kp LC(N)  &kp LC(L)  &kp LC(D)  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LC(E)  &trans     &kp LC(M)  &trans     &kp LC(Y)                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans     &trans     &trans     &trans     &trans     &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                              &trans     &trans     &trans     &trans    &trans  &trans  &trans  &trans
             >;
         };
     };
