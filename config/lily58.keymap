@@ -108,11 +108,11 @@
 
         function_layer {
             bindings = <
-&trans  &trans  &trans         &trans         &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans         &trans         &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans         &trans         &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp C_AC_REDO  &kp C_AC_UNDO  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                               &trans         &trans  &trans  &trans    &trans  &trans  &trans  &trans
+&trans  &trans  &trans                 &trans     &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans                 &trans     &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans                 &trans     &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp LS(LG(C_AC_REDO))  &kp LG(Z)  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                       &trans     &trans  &trans  &trans    &trans  &trans  &trans  &trans
             >;
         };
 
