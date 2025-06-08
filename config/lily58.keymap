@@ -12,7 +12,7 @@
         lm: new_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&mo 2 &kp LEFT_SHIFT>;
+            bindings = <&mo 3 &kp LEFT_SHIFT>;
             label = "NEW_MACRO";
         };
     };
@@ -37,13 +37,14 @@
         //     bindings = <&kp Y>, <&kp Z>, <&kp A>;  // Cycles through Y, Z, A
         // };
 
-        tap_hold: tap_hold {
+        tap_hold_toglayer: tap_hold_toglayer {
             compatible = "zmk,behavior-hold-tap";
-            label = "TAP_HOLD";
-            bindings = <&mo>, <&kp>;
+            label = "TAP_HOLD_TOGLAYER";
+            bindings = <&tog>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
+            flavor = "tap-preferred";
         };
 
         isolate: isolate {
@@ -63,6 +64,16 @@
 
             tapping-term-ms = <350>;
         };
+
+        new_behavior: new_behavior {
+            compatible = "zmk,behavior-hold-tap";
+            label = "NEW_BEHAVIOR";
+            bindings = <&tog>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
     };
 
     keymap {
@@ -78,11 +89,11 @@
 
             display-name = "Base";
             bindings = <
-&kp SQT  &kp LA(L)  &kp X      &kp B    &none       &none                                  &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
-&none    &none      &kp DEL    &kp RET  &kp ESCAPE  &kp Y                                  &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
-&none    &none      &kp S      &kp M    &kp U       &kp RA(M)                              &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
-&none    &none      &kp SPACE  &kp J    &kp GRAVE   &kp E      &none             &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-                               &tog 4   &mo 3       &mo 2      &kp LEFT_SHIFT    &kp RET   &mo 1   &kp BSPC  &kp RGUI
+&kp SQT  &kp LA(L)  &kp X      &tap_hold_toglayer 1 B  &none       &none                                  &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
+&none    &none      &kp DEL    &kp RET                 &kp ESCAPE  &kp Y                                  &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
+&none    &none      &kp S      &kp M                   &kp U       &kp RA(M)                              &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
+&none    &none      &kp SPACE  &kp J                   &kp GRAVE   &kp E      &none             &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+                               &tog 5                  &mo 4       &mo 3      &kp LEFT_SHIFT    &kp RET   &mo 1   &kp BSPC  &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -98,11 +109,22 @@
 
             display-name = "Plane";
             bindings = <
-&trans  &trans  &kp F2  &kp Z   &kp GRAVE  &kp RET                    &trans       &trans     &trans     &trans    &trans     &trans
-&none   &none   &trans  &trans  &trans     &trans                     &kp N6       &kp N7     &kp N8     &kp N9    &kp N0     &trans
-&trans  &none   &trans  &trans  &trans     &trans                     &trans       &kp LEFT   &kp DOWN   &kp UP    &kp RIGHT  &trans
-&trans  &none   &none   &none   &none      &none    &trans    &trans  &kp KP_PLUS  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT   &kp BSLH
-                        &trans  &trans     &trans   &trans    &trans  &trans       &trans     &trans
+&kp LS(B)  &kp LS(C)  &kp LS(D)  &kp LS(F)  &kp LS(G)  &kp RS(H)                    &trans       &trans     &trans     &trans    &trans     &trans
+&none      &none      &trans     &trans     &trans     &trans                       &kp N6       &kp N7     &kp N8     &kp N9    &kp N0     &trans
+&trans     &none      &trans     &trans     &trans     &trans                       &trans       &kp LEFT   &kp DOWN   &kp UP    &kp RIGHT  &trans
+&trans     &none      &none      &none      &none      &none      &trans    &trans  &kp KP_PLUS  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT   &kp BSLH
+                                 &trans     &trans     &tog 1     &trans    &trans  &trans       &trans     &trans
+            >;
+        };
+
+        Axis_layer {
+            display-name = "Axis";
+            bindings = <
+&kp V   &kp SEMICOLON  &kp COMMA  &kp PERIOD  &none   &none                     &trans       &trans     &trans     &trans    &trans     &trans
+&none   &none          &trans     &trans      &trans  &none                     &kp N6       &kp N7     &kp N8     &kp N9    &kp N0     &trans
+&trans  &none          &trans     &trans      &trans  &trans                    &trans       &kp LEFT   &kp DOWN   &kp UP    &kp RIGHT  &trans
+&trans  &none          &none      &none       &none   &none   &trans    &trans  &kp KP_PLUS  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT   &kp BSLH
+                                  &trans      &trans  &trans  &trans    &trans  &trans       &trans     &trans
             >;
         };
 
