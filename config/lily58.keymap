@@ -65,7 +65,7 @@
             bindings = <
 &none  &kp G   &kp C   &kp R   &kp L   &kp NON_US_BACKSLASH                                    &trans  &trans  &trans  &trans  &trans  &trans
 &none  &kp A   &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
-&none  &trans  &none   &trans  &kp R   &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
+&none  &trans  &none   &trans  &kp T   &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
 &none  &none   &kp N   &trans  &trans  &none                 &mo 5                     &trans  &trans  &trans  &trans  &trans  &trans  &trans
                        &trans  &trans  &sl 6                 &doubleTap_stickyLayer    &trans  &trans  &trans  &trans
             >;
