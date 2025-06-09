@@ -55,7 +55,7 @@
 &none    &none      &kp ESCAPE  &kp RET                 &kp DEL    &kp P                                  &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
 &none    &kp O      &kp U       &kp M                   &kp S      &kp LA(M)                              &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
 &none    &none      &kp SPACE   &kp J                   &kp GRAVE  &kp E      &mo 4             &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-                                &tog 1                  &mo 3      &mo 1      &kp LEFT_SHIFT    &kp RET   &mo 2   &kp BSPC  &kp RGUI
+                                &tog 1                  &mo 3      &mo 2      &kp LEFT_SHIFT    &kp RET   &mo 2   &kp BSPC  &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
