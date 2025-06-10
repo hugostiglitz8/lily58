@@ -65,7 +65,7 @@
             bindings = <
 &none  &kp G   &kp C   &kp R   &kp L   &kp BACKSLASH                                    &trans  &trans  &trans  &trans  &trans  &trans
 &none  &kp A   &trans  &trans  &trans  &trans                                           &trans  &trans  &trans  &trans  &trans  &trans
-&none  &trans  &none   &kp T   &trans  &trans                                           &trans  &trans  &trans  &trans  &trans  &trans
+&none  &trans  &none   &trans  &kp T   &trans                                           &trans  &trans  &trans  &trans  &trans  &trans
 &none  &none   &kp N   &trans  &trans  &none          &mo 5                     &trans  &trans  &trans  &trans  &trans  &trans  &trans
                        &trans  &trans  &sl 6          &doubleTap_stickyLayer    &trans  &trans  &trans  &trans
             >;
@@ -123,7 +123,7 @@
             bindings = <
 &trans  &kp LC(I)  &kp LC(C)  &kp LC(P)  &kp LC(V)  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp LC(T)  &kp LC(N)  &kp LC(L)  &kp LC(D)  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LC(E)  &trans     &kp LC(M)  &trans     &kp LC(Y)                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LC(E)  &trans     &trans     &kp LC(M)  &kp LC(Y)                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans     &trans     &trans     &trans     &trans     &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
                               &trans     &trans     &trans     &trans    &trans  &trans  &trans  &trans
             >;
