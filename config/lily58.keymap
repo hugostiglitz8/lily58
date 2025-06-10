@@ -53,7 +53,7 @@
             bindings = <
 &kp SQT  &kp LA(L)  &kp X       &tap_hold_toglayer 2 B  &none      &none                                  &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
 &none    &none      &kp ESCAPE  &kp RET                 &kp DEL    &kp P                                  &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
-&none    &kp O      &kp U       &kp M                   &kp S      &kp LA(M)                              &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
+&none    &kp O      &kp U       &kp S                   &kp M      &kp LA(M)                              &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
 &none    &none      &kp SPACE   &kp J                   &kp GRAVE  &kp E      &mo 4             &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
                                 &tog 1                  &mo 3      &mo 2      &kp LEFT_SHIFT    &kp RET   &mo 2   &kp BSPC  &kp RGUI
             >;
@@ -65,7 +65,7 @@
             bindings = <
 &none  &kp G   &kp C   &kp R   &kp L   &kp BACKSLASH                                    &trans  &trans  &trans  &trans  &trans  &trans
 &none  &kp A   &trans  &trans  &trans  &trans                                           &trans  &trans  &trans  &trans  &trans  &trans
-&none  &trans  &none   &trans  &kp T   &trans                                           &trans  &trans  &trans  &trans  &trans  &trans
+&none  &trans  &none   &kp T   &trans  &trans                                           &trans  &trans  &trans  &trans  &trans  &trans
 &none  &none   &kp N   &trans  &trans  &none          &mo 5                     &trans  &trans  &trans  &trans  &trans  &trans  &trans
                        &trans  &trans  &sl 6          &doubleTap_stickyLayer    &trans  &trans  &trans  &trans
             >;
