@@ -36,6 +36,44 @@
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&sl 6>;
         };
+
+        dt_Shift: dt_Shift {
+            compatible = "zmk,behavior-tap-dance";
+            label = "DT_SHIFT";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_SHIFT>, <&kp RETURN>;
+        };
+
+        tapHold_kp: tapHold_kp {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TAPHOLD_KP";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
+
+        dt_draw: dt_draw {
+            compatible = "zmk,behavior-tap-dance";
+            label = "DT_DRAW";
+            #binding-cells = <0>;
+            bindings = <&kp B>, <&tog 1>;
+        };
+
+        exitDraw_R: exitDraw_R {
+            compatible = "zmk,behavior-tap-dance";
+            label = "EXITDRAW_R";
+            #binding-cells = <0>;
+            bindings = <&kp R>, <&tog 1>;
+        };
+
+        exitDraw_esc: exitDraw_esc {
+            compatible = "zmk,behavior-tap-dance";
+            label = "EXITDRAW_ESC";
+            #binding-cells = <0>;
+            bindings = <&kp ESCAPE>, <&tog 1>;
+        };
     };
 
     keymap {
@@ -51,11 +89,11 @@
 
             display-name = "Base";
             bindings = <
-&kp SQT        &kp LA(L)  &kp X       &tap_hold_toglayer 2 B  &none      &none                                  &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
-&none          &none      &kp ESCAPE  &kp RET                 &kp DEL    &kp P                                  &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
-&kp LG(Z)      &kp O      &kp U       &kp S                   &kp M      &kp LA(M)                              &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LS(LG(Z))  &none      &kp SPACE   &kp J                   &kp GRAVE  &kp E      &mo 4             &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-                                      &tog 1                  &mo 3      &mo 2      &kp LEFT_SHIFT    &kp RET   &mo 2   &kp BSPC  &kp RGUI
+&kp SQT        &kp LA(L)  &kp X       &dt_draw              &none      &none                             &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
+&none          &none      &kp ESCAPE  &tapHold_kp LGUI RET  &kp DEL    &kp P                             &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
+&kp LG(Z)      &kp O      &kp U       &kp S                 &kp M      &kp LA(M)                         &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
+&kp LS(LG(Z))  &none      &kp SPACE   &kp J                 &kp GRAVE  &kp E      &mo 4        &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+                                      &tog 1                &mo 3      &sl 2      &dt_Shift    &kp RET   &mo 2   &kp BSPC  &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -63,11 +101,11 @@
 
         sketch_Layer {
             bindings = <
-&none          &kp G   &kp C   &kp R   &kp L   &kp BACKSLASH                                    &trans  &trans  &trans  &trans  &trans  &trans
-&none          &kp A   &trans  &trans  &trans  &trans                                           &trans  &trans  &trans  &trans  &trans  &trans
-&kp LG(Z)      &trans  &none   &trans  &kp T   &trans                                           &trans  &trans  &trans  &trans  &trans  &trans
-&kp LG(LS(Z))  &none   &kp N   &trans  &trans  &none          &mo 5                     &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                               &trans  &trans  &sl 6          &doubleTap_stickyLayer    &trans  &trans  &trans  &trans
+&none          &kp G   &kp C          &exitDraw_R  &kp L   &kp BACKSLASH                                    &trans  &trans  &trans  &trans  &trans  &trans
+&none          &kp A   &exitDraw_esc  &trans       &trans  &trans                                           &trans  &trans  &trans  &trans  &trans  &trans
+&kp LG(Z)      &trans  &none          &trans       &kp T   &trans                                           &trans  &trans  &trans  &trans  &trans  &trans
+&kp LG(LS(Z))  &none   &kp N          &trans       &trans  &none          &mo 5                     &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                      &trans       &trans  &sl 6          &doubleTap_stickyLayer    &trans  &trans  &trans  &trans
             >;
         };
 
