@@ -103,7 +103,7 @@
             bindings = <
 &none          &kp G   &kp C          &exitDraw_R  &kp L   &kp BACKSLASH                                    &trans  &trans  &trans  &trans  &trans  &trans
 &none          &kp A   &exitDraw_esc  &trans       &trans  &trans                                           &trans  &trans  &trans  &trans  &trans  &trans
-&kp LG(Z)      &trans  &none          &trans       &kp T   &trans                                           &trans  &trans  &trans  &trans  &trans  &trans
+&kp LG(Z)      &trans  &none          &kp T        &trans  &trans                                           &trans  &trans  &trans  &trans  &trans  &trans
 &kp LG(LS(Z))  &none   &kp N          &trans       &trans  &none          &mo 5                     &trans  &trans  &trans  &trans  &trans  &trans  &trans
                                       &trans       &trans  &sl 6          &doubleTap_stickyLayer    &trans  &trans  &trans  &trans
             >;
