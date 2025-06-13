@@ -74,6 +74,14 @@
             #binding-cells = <0>;
             bindings = <&kp ESCAPE>, <&tog 1>;
         };
+
+        stickyConstraints: stickyConstraints {
+            compatible = "zmk,behavior-sticky-key";
+            label = "STICKYCONSTRAINTS";
+            bindings = <&sl>;
+            #binding-cells = <1>;
+            release-after-ms = <5000>;
+        };
     };
 
     keymap {
@@ -101,11 +109,11 @@
 
         sketch_Layer {
             bindings = <
-&none          &kp G   &kp C          &exitDraw_R  &kp L   &kp BACKSLASH                                    &trans  &trans  &trans  &trans  &trans  &trans
-&none          &kp A   &exitDraw_esc  &trans       &trans  &trans                                           &trans  &trans  &trans  &trans  &trans  &trans
-&kp LG(Z)      &trans  &none          &kp T        &trans  &trans                                           &trans  &trans  &trans  &trans  &trans  &trans
-&kp LG(LS(Z))  &none   &kp N          &trans       &trans  &none          &mo 5                     &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                                      &trans       &trans  &sl 6          &doubleTap_stickyLayer    &trans  &trans  &trans  &trans
+&none          &kp G   &kp C          &exitDraw_R  &kp L   &kp BACKSLASH                                           &trans  &trans  &trans  &trans  &trans  &trans
+&none          &kp A   &exitDraw_esc  &trans       &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
+&kp LG(Z)      &trans  &none          &kp T        &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
+&kp LG(LS(Z))  &none   &kp N          &trans       &trans  &none                 &mo 5                     &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                      &trans       &trans  &stickyConstraints 6  &doubleTap_stickyLayer    &trans  &trans  &trans  &trans
             >;
         };
 
