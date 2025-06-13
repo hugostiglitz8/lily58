@@ -1,4 +1,211 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/backlight.h>
 
+/ {
+    macros {
+        lm: new_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&mo 1 &kp LEFT_SHIFT>;
+            label = "NEW_MACRO";
+        };
+        
+        // Macro to turn backlight on when entering sketch layer
+        enter_sketch: enter_sketch {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bl BL_ON>, <&tog 1>;
+            label = "ENTER_SKETCH";
+        };
+        
+        // Macro to turn backlight off when exiting sketch layer  
+        exit_sketch: exit_sketch {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bl BL_OFF>, <&tog 1>;
+            label = "EXIT_SKETCH";
+        };
+    };
+
+    behaviors {
+        // Define a tap dance that toggles between two outputs
+
+        tap_hold_toglayer: tap_hold_toglayer {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TAP_HOLD_TOGLAYER";
+            bindings = <&tog>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
+
+        doubleTap_stickyLayer: doubleTap_stickyLayer {
+            compatible = "zmk,behavior-tap-dance";
+            label = "DOUBLETAP_STICKYLAYER";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_SHIFT>, <&sl 6>;
+        };
+
+        // Modified to include backlight control
+        doubleTap_stickyLayer_bl: doubleTap_stickyLayer_bl {
+            compatible = "zmk,behavior-tap-dance";
+            label = "DOUBLETAP_STICKYLAYER_BL";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_SHIFT>, <&macro_sl_bl 6>;
+        };
+
+        dt_Shift: dt_Shift {
+            compatible = "zmk,behavior-tap-dance";
+            label = "DT_SHIFT";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_SHIFT>, <&kp RETURN>, <&kp SPACE>;
+        };
+
+        tapHold_kp: tapHold_kp {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TAPHOLD_KP";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
+
+        // Modified to use backlight-aware macros
+        dt_draw: dt_draw {
+            compatible = "zmk,behavior-tap-dance";
+            label = "DT_DRAW";
+            #binding-cells = <0>;
+            bindings = <&kp B>, <&enter_sketch>;
+        };
+
+        exitDraw_R: exitDraw_R {
+            compatible = "zmk,behavior-tap-dance";
+            label = "EXITDRAW_R";
+            #binding-cells = <0>;
+            bindings = <&kp R>, <&exit_sketch>;
+        };
+
+        exitDraw_esc: exitDraw_esc {
+            compatible = "zmk,behavior-tap-dance";
+            label = "EXITDRAW_ESC";
+            #binding-cells = <0>;
+            bindings = <&kp ESCAPE>, <&exit_sketch>;
+        };
+
+        stickyConstraints: stickyConstraints {
+            compatible = "zmk,behavior-sticky-key";
+            label = "STICKYCONSTRAINTS";
+            bindings = <&sl>;
+            #binding-cells = <1>;
+            release-after-ms = <5000>;
+        };
+        
+        // Sticky layer with backlight control for constraints layer
+        stickyConstraints_bl: stickyConstraints_bl {
+            compatible = "zmk,behavior-sticky-key";
+            label = "STICKYCONSTRAINTS_BL";
+            bindings = <&macro_sl_bl>;
+            #binding-cells = <1>;
+            release-after-ms = <5000>;
+        };
+    };
+
+    // Add macros for sticky layer with backlight control
+    macros {
+        macro_sl_bl: macro_sl_bl {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = 
+                <&macro_param_1to1>,
+                <&macro_tap &bl BL_ON>,
+                <&macro_tap &sl MACRO_PLACEHOLDER>;
+            label = "MACRO_SL_BL";
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+           
+            display-name = "Base";
+            bindings = <
+&kp SQT        &kp LA(L)  &kp X       &dt_draw              &none      &kp BACKSLASH                         &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
+&none          &none      &kp ESCAPE  &tapHold_kp LGUI RET  &kp DEL    &kp P                                 &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
+&kp LG(Z)      &kp O      &kp U       &kp S                 &kp M      &kp LA(M)                             &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
+&kp LS(LG(Z))  &none      &kp SPACE   &kp J                 &kp GRAVE  &kp E          &mo 4        &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+                                      &enter_sketch         &mo 3      &sl 2          &dt_Shift    &kp RET   &mo 2   &kp BSPC  &kp RGUI
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        sketch_Layer {
+            bindings = <
+&none          &kp G   &kp C          &exitDraw_R  &kp L   &kp BACKSLASH                                                    &trans  &trans  &trans  &trans  &trans  &trans
+&none          &kp A   &exitDraw_esc  &trans       &trans  &trans                                                           &trans  &trans  &trans  &trans  &trans  &trans
+&kp LG(Z)      &trans  &none          &kp T        &trans  &trans                                                           &trans  &trans  &trans  &trans  &trans  &trans
+&kp LG(LS(Z))  &none   &kp SPACE      &trans       &trans  &none                 &mo 5                     &trans         &trans  &trans  &trans  &trans  &trans  &trans
+                                      &trans       &trans  &stickyConstraints_bl 6  &doubleTap_stickyLayer_bl    &trans  &trans  &trans  &trans
+            >;
+        };
+
+        blue_layer {
+            
+            display-name = "Blue";
+            bindings = <
+&trans  &trans   &trans  &trans   &trans  &trans                    &trans     &trans     &trans           &trans    &trans    &trans
+&none   &none    &trans  &kp TAB  &trans  &trans                    &kp F7     &kp F8     &kp F9           &kp F10   &kp F11   &kp F12
+&kp F3  &kp F12  &kp F2  &none    &none   &trans                    &kp CARET  &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp TILDE
+&kp F7  &kp F5   &kp F6  &kp Z    &kp H   &none   &trans    &trans  &trans     &kp MINUS  &kp KP_PLUS      &kp LBRC  &kp RBRC  &kp PIPE
+                         &trans   &trans  &trans  &trans    &trans  &trans     &trans     &trans
+            >;
+        };
+
+        Yellow_layer {
+            bindings = <
+&kp LS(LG(E))  &trans  &trans                 &trans     &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans         &trans  &trans                 &trans     &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans         &trans  &trans                 &trans     &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans         &trans  &kp LS(LG(C_AC_REDO))  &kp LG(Z)  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                              &trans     &trans  &trans  &trans    &trans  &trans  &trans  &trans
+            >;
+        };
+
+        purple {
+            bindings = <
+&none  &none  &kp B  &kp F    &kp E  &none                  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &kp TAB  &none  &none                  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none    &none  &none                  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none    &none  &none  &none    &none  &none  &none  &none  &none  &none  &none
+                     &none    &none  &none  &none    &none  &none  &none  &none
+            >;
+        };
+
+        skPurple {
+            bindings = <
+&trans  &trans  &kp E   &kp P   &kp C   &kp RIGHT_BRACKET                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                               &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                               &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans             &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans             &trans    &trans  &trans  &trans  &trans
+            >;
+        };
+
+        constraints_layer {
+            bindings = <
+&trans  &kp LC(I)  &kp LC(C)  &kp LC(P)  &kp LC(V)  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LC(T)  &kp LC(N)  &kp LC(L)  &kp LC(D)  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LC(E)  &trans     &trans     &kp LC(M)  &kp LC(Y)                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans     &trans     &trans     &trans     &trans     &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                              &trans     &trans     &trans     &trans    &trans  &trans  &trans  &trans
+            >;
+        };
+    };
+};
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
