@@ -1,6 +1,6 @@
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/backlight.h>
+#include <dt-bindings/zmk/keys.h>
 
 / {
     macros {
@@ -10,20 +10,22 @@
             bindings = <&mo 1 &kp LEFT_SHIFT>;
             label = "NEW_MACRO";
         };
-        
+
         // Macro to turn backlight on when entering sketch layer
+
         enter_sketch: enter_sketch {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bl BL_ON>, <&tog 1>;
+            bindings = <&bl BL_ON &tog 1>;
             label = "ENTER_SKETCH";
         };
-        
+
         // Macro to turn backlight off when exiting sketch layer  
+
         exit_sketch: exit_sketch {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bl BL_OFF>, <&tog 1>;
+            bindings = <&bl BL_OFF &tog 1>;
             label = "EXIT_SKETCH";
         };
     };
@@ -49,6 +51,7 @@
         };
 
         // Double tap behavior (no backlight control needed)
+
         doubleTap_stickyLayer_bl: doubleTap_stickyLayer_bl {
             compatible = "zmk,behavior-tap-dance";
             label = "DOUBLETAP_STICKYLAYER_BL";
@@ -74,6 +77,7 @@
         };
 
         // Modified to use backlight-aware macros
+
         dt_draw: dt_draw {
             compatible = "zmk,behavior-tap-dance";
             label = "DT_DRAW";
@@ -102,8 +106,9 @@
             #binding-cells = <1>;
             release-after-ms = <5000>;
         };
-        
+
         // Sticky layer for constraints (no backlight control needed)
+
         stickyConstraints_bl: stickyConstraints_bl {
             compatible = "zmk,behavior-sticky-key";
             label = "STICKYCONSTRAINTS_BL";
@@ -117,7 +122,6 @@
         compatible = "zmk,keymap";
 
         default_layer {
-           
             display-name = "Base";
             bindings = <
 &kp SQT        &kp LA(L)  &kp X       &dt_draw              &none      &kp BACKSLASH                         &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
@@ -132,16 +136,15 @@
 
         sketch_Layer {
             bindings = <
-&none          &kp G   &kp C          &exitDraw_R  &kp L   &kp BACKSLASH                                                           &trans  &trans  &trans  &trans  &trans  &trans
-&none          &kp A   &exitDraw_esc  &trans       &trans  &trans                                                                  &trans  &trans  &trans  &trans  &trans  &trans
-&kp LG(Z)      &trans  &none          &kp T        &trans  &trans                                                                  &trans  &trans  &trans  &trans  &trans  &trans
-&kp LG(LS(Z))  &none   &kp SPACE      &trans       &trans  &none                 &mo 5                     &trans                &trans  &trans  &trans  &trans  &trans  &trans
-                                      &trans       &trans  &stickyConstraints_bl 6  &doubleTap_stickyLayer_bl    &trans         &trans  &trans  &trans
+&none          &kp G   &kp C          &exitDraw_R  &kp L   &kp BACKSLASH                                                 &trans  &trans  &trans  &trans  &trans  &trans
+&none          &kp A   &exitDraw_esc  &trans       &trans  &trans                                                        &trans  &trans  &trans  &trans  &trans  &trans
+&kp LG(Z)      &trans  &none          &kp T        &trans  &trans                                                        &trans  &trans  &trans  &trans  &trans  &trans
+&kp LG(LS(Z))  &none   &kp SPACE      &trans       &trans  &none                    &mo 5                        &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                      &trans       &trans  &stickyConstraints_bl 6  &doubleTap_stickyLayer_bl    &trans  &trans  &trans  &trans
             >;
         };
 
         blue_layer {
-            
             display-name = "Blue";
             bindings = <
 &trans  &trans   &trans  &trans   &trans  &trans                    &trans     &trans     &trans           &trans    &trans    &trans
@@ -154,21 +157,21 @@
 
         Yellow_layer {
             bindings = <
-&kp LS(LG(E))  &trans  &trans                 &trans     &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans         &trans  &trans                 &trans     &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans         &trans  &trans                 &trans     &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans         &trans  &kp LS(LG(C_AC_REDO))  &kp LG(Z)  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                                              &trans     &trans  &trans  &trans    &trans  &trans  &trans  &trans
+&kp LS(LG(E))  &trans            &trans         &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans         &trans            &trans         &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans         &kp LG(UP_ARROW)  &trans         &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&kp LG(LEFT)   &kp LG(DOWN)      &kp LG(RIGHT)  &none   &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                                &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
             >;
         };
 
         purple {
             bindings = <
-&none  &none  &kp B  &kp F    &kp E  &none                  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &kp TAB  &none  &none                  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none    &none  &none                  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none    &none  &none  &none    &none  &none  &none  &none  &none  &none  &none
-                     &none    &none  &none  &none    &none  &none  &none  &none
+&kp LA(LG(S))  &kp LA(LG(P))  &kp B  &kp F    &kp E  &none                  &none  &none  &none  &none  &none  &none
+&kp LS(LG(C))  &none          &none  &kp TAB  &none  &none                  &none  &none  &none  &none  &none  &none
+&none          &none          &none  &none    &none  &none                  &none  &none  &none  &none  &none  &none
+&none          &none          &none  &none    &none  &none  &none    &none  &none  &none  &none  &none  &none  &none
+                                     &none    &none  &none  &none    &none  &none  &none  &none
             >;
         };
 
