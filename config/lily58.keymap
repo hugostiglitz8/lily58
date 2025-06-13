@@ -1,13 +1,11 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    outputs {
+    layer_led = &gpio0 29;
+};
     macros {
         lm: new_macro {
             compatible = "zmk,behavior-macro";
@@ -18,6 +16,16 @@
     };
 
     behaviors {
+//LED
+    led_layer_indicator {
+        compatible = "zmk,behavior-output";
+        gpios = <&gpio0 29 GPIO_ACTIVE_HIGH>;
+        label = "Layer LED";
+    };
+
+
+
+
         // Define a tap dance that toggles between two outputs
 
         tap_hold_toglayer: tap_hold_toglayer {
@@ -88,15 +96,10 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            // ------------------------------------------------------------------------------------------------------------
-            // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   `   |
-            // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   -   |
-            // |  CTRL |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
-            // | SHIFT |  Z  |  X  |  C   |  V   |  B   |   "["  |  |  "]"  |  N   |  M    |  ,    |  .   |   /   | SHIFT |
-            //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
-
+           
             display-name = "Base";
             bindings = <
+&out &led_layer_indicator 0
 &kp SQT        &kp LA(L)  &kp X       &dt_draw              &none      &kp BACKSLASH                         &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
 &none          &none      &kp ESCAPE  &tapHold_kp LGUI RET  &kp DEL    &kp P                                 &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
 &kp LG(Z)      &kp O      &kp U       &kp S                 &kp M      &kp LA(M)                             &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
@@ -109,6 +112,7 @@
 
         sketch_Layer {
             bindings = <
+&out &led_layer_indicator 1
 &none          &kp G   &kp C          &exitDraw_R  &kp L   &kp BACKSLASH                                           &trans  &trans  &trans  &trans  &trans  &trans
 &none          &kp A   &exitDraw_esc  &trans       &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
 &kp LG(Z)      &trans  &none          &kp T        &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
@@ -118,15 +122,10 @@
         };
 
         blue_layer {
-            // ------------------------------------------------------------------------------------------------------------
-            // | BTCLR | BT1 | BT2 |  BT3 |  BT4 |  BT5 |                   |      |       |       |      |       |       |
-            // |  F1   |  F2 |  F3 |  F4  |  F5  |  F6  |                   |  F7  |  F8   |  F9   |  F10 |  F11  |  F12  |
-            // |   `   |  !  |  @  |  #   |  $   |  %   |                   |  ^   |  &    |  *    |  (   |   )   |   ~   |
-            // |       |     |     |      |      |      |        |  |       |      |  _    |  +    |  {   |   }   |  "|"  |
-            //                     |      |      |      |        |  |       |      |       |       |
-
+           
             display-name = "Blue";
             bindings = <
+&out &led_layer_indicator 0
 &trans  &trans   &trans  &trans   &trans  &trans                    &trans     &trans     &trans           &trans    &trans    &trans
 &none   &none    &trans  &kp TAB  &trans  &trans                    &kp F7     &kp F8     &kp F9           &kp F10   &kp F11   &kp F12
 &kp F3  &kp F12  &kp F2  &none    &none   &trans                    &kp CARET  &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp TILDE
@@ -137,6 +136,7 @@
 
         Yellow_layer {
             bindings = <
+&out &led_layer_indicator 0
 &kp LS(LG(E))  &trans  &trans                 &trans     &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans         &trans  &trans                 &trans     &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans         &trans  &trans                 &trans     &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
@@ -147,6 +147,7 @@
 
         purple {
             bindings = <
+&out &led_layer_indicator 0
 &none  &none  &kp B  &kp F    &kp E  &none                  &none  &none  &none  &none  &none  &none
 &none  &none  &none  &kp TAB  &none  &none                  &none  &none  &none  &none  &none  &none
 &none  &none  &none  &none    &none  &none                  &none  &none  &none  &none  &none  &none
@@ -157,6 +158,7 @@
 
         skPurple {
             bindings = <
+&out &led_layer_indicator 1
 &trans  &trans  &kp E   &kp P   &kp C   &kp RIGHT_BRACKET                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                               &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                               &trans  &trans  &trans  &trans  &trans  &trans
@@ -167,6 +169,7 @@
 
         constraints_layer {
             bindings = <
+&out &led_layer_indicator 1
 &trans  &kp LC(I)  &kp LC(C)  &kp LC(P)  &kp LC(V)  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp LC(T)  &kp LC(N)  &kp LC(L)  &kp LC(D)  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp LC(E)  &trans     &trans     &kp LC(M)  &kp LC(Y)                    &trans  &trans  &trans  &trans  &trans  &trans
