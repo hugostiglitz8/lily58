@@ -190,7 +190,7 @@
 &trans  &kp LC(I)  &kp LC(C)  &kp LC(P)  &kp LC(V)  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp LC(T)  &kp LC(N)  &kp LC(L)  &kp LC(D)  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp LC(E)  &trans     &trans     &kp LC(M)  &kp LC(Y)                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans     &trans     &trans     &trans     &trans     &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans     &trans     &trans     &kp H      &trans     &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
                               &trans     &trans     &trans     &trans    &trans  &trans  &trans  &trans
             >;
         };
