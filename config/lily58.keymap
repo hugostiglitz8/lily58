@@ -41,7 +41,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "DT_SHIFT";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_SHIFT>, <&kp RETURN>;
+            bindings = <&kp LEFT_SHIFT>, <&kp RETURN>, <&kp SPACE>;
         };
 
         tapHold_kp: tapHold_kp {
@@ -112,7 +112,7 @@
 &none          &kp G   &kp C          &exitDraw_R  &kp L   &kp BACKSLASH                                           &trans  &trans  &trans  &trans  &trans  &trans
 &none          &kp A   &exitDraw_esc  &trans       &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
 &kp LG(Z)      &trans  &none          &kp T        &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
-&kp LG(LS(Z))  &none   &kp N          &trans       &trans  &none                 &mo 5                     &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp LG(LS(Z))  &none   &kp SPACE      &trans       &trans  &none                 &mo 5                     &trans  &trans  &trans  &trans  &trans  &trans  &trans
                                       &trans       &trans  &stickyConstraints 6  &doubleTap_stickyLayer    &trans  &trans  &trans  &trans
             >;
         };
