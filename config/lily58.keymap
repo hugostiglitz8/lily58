@@ -124,8 +124,8 @@
         default_layer {
             display-name = "Base";
             bindings = <
-&kp SQT        &kp LA(L)  &kp X       &dt_draw              &none      &kp BACKSLASH                         &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
-&none          &none      &kp ESCAPE  &tapHold_kp LGUI RET  &kp DEL    &kp P                                 &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
+&kp SQT        &kp LA(L)  &kp X       &dt_draw              &kp O      &kp BACKSLASH                         &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
+&kp K          &kp LA(R)  &kp ESCAPE  &tapHold_kp LGUI RET  &kp DEL    &kp P                                 &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
 &kp LG(Z)      &kp O      &kp U       &kp S                 &kp M      &kp LA(M)                             &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
 &kp LS(LG(Z))  &none      &kp SPACE   &kp J                 &kp GRAVE  &kp E          &mo 4        &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
                                       &enter_sketch         &mo 3      &sl 2          &dt_Shift    &kp RET   &mo 2   &kp BSPC  &kp RGUI
@@ -188,7 +188,7 @@
         constraints_layer {
             bindings = <
 &trans  &kp LC(I)  &kp LC(C)  &kp LC(P)  &kp LC(V)  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LC(T)  &kp LC(N)  &kp LC(L)  &kp LC(D)  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LC(T)  &kp LC(N)  &kp LC(L)  &kp LC(D)  &kp LC(L)                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp LC(E)  &trans     &trans     &kp LC(M)  &kp LC(Y)                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans     &trans     &trans     &kp H      &trans     &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
                               &trans     &trans     &trans     &trans    &trans  &trans  &trans  &trans
