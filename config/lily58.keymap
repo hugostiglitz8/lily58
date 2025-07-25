@@ -153,7 +153,7 @@
 &none          &kp G   &kp C          &exitDraw_R  &kp L   &kp BACKSLASH                                                 &trans  &trans  &trans  &trans  &trans  &trans
 &none          &kp A   &exitDraw_esc  &trans       &trans  &trans                                                        &trans  &trans  &trans  &trans  &trans  &trans
 &kp LG(Z)      &trans  &none          &kp T        &trans  &trans                                                        &trans  &trans  &trans  &trans  &trans  &trans
-&kp LG(LS(Z))  &none   &kp SPACE      &trans       &trans  &none                    &mo 5                        &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp LG(LS(Z))  &none   &kp SPACE      &trans       &trans  &extrude_exitSketch      &mo 5                        &trans  &trans  &trans  &trans  &trans  &trans  &trans
                                       &trans       &trans  &stickyConstraints_bl 6  &doubleTap_stickyLayer_bl    &trans  &trans  &trans  &trans
             >;
         };
