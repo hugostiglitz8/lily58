@@ -28,6 +28,13 @@
             bindings = <&bl BL_OFF &tog 1>;
             label = "EXIT_SKETCH";
         };
+
+        sketch_sketchLayer: sketch_sketchLayer {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp SPACE &enter_sketch>;
+            label = "SKETCH_SKETCHLAYER";
+        };
     };
 
     behaviors {
