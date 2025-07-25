@@ -35,6 +35,13 @@
             bindings = <&kp SPACE &enter_sketch>;
             label = "SKETCH_SKETCHLAYER";
         };
+
+        extrude_exitSketch: extrude_exitSketch {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp E &exit_sketch>;
+            label = "EXTRUDE_EXITSKETCH";
+        };
     };
 
     behaviors {
@@ -134,7 +141,7 @@
 &kp SQT        &kp LA(L)  &kp X                &dt_draw              &kp O      &kp BACKSLASH                         &kp N6  &kp N7    &kp N8     &kp N9   &kp N0    &kp GRAVE
 &kp K          &kp LA(R)  &kp ESCAPE           &tapHold_kp LGUI RET  &kp DEL    &kp P                                 &kp Y   &kp U     &kp I      &kp O    &kp P     &kp MINUS
 &kp LG(Z)      &kp O      &kp U                &kp S                 &kp M      &kp LA(M)                             &kp H   &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LS(LG(Z))  &none      &sketch_sketchLayer  &kp J                 &kp GRAVE  &kp E          &mo 4        &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+&kp LS(LG(Z))  &none      &sketch_sketchLayer  &kp J                 &kp GRAVE  &exitDraw_R    &mo 4        &kp RBKT  &kp N   &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
                                                &enter_sketch         &mo 3      &sl 2          &dt_Shift    &kp RET   &mo 2   &kp BSPC  &kp RGUI
             >;
 
